@@ -1,7 +1,8 @@
 mod day1;
 
 fn main() {
-    println!("Hello, world!");
+    let result = day1_part1();
+    println!("day1: {result}");
 }
 
 fn day1_part1() -> i32 {
