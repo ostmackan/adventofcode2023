@@ -1,5 +1,4 @@
 use std::fs;
-use std::ops::Index;
 use std::str::FromStr;
 
 // Solves day1 part 1.
