@@ -13,7 +13,7 @@ pub fn run(path: &str) -> i32{
         let first = row.find(char::is_numeric);
         let last = row.rfind(char::is_numeric);
 
-        if(first == None || last == None)
+        if first == None || last == None
         {
             panic!("error");
         }
@@ -25,7 +25,7 @@ pub fn run(path: &str) -> i32{
 
         let value = i32::from_str(&number);
 
-        if(value.is_ok()){
+        if value.is_ok(){
             result += value.unwrap();
         }
     }
