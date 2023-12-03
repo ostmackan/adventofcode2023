@@ -1,7 +1,6 @@
-use std::fs;
 use crate::day2::shared;
 use crate::day2::shared::GameInstance;
-
+use std::fs;
 
 pub fn run(path: &str) -> i32 {
     let file_contents = fs::read_to_string(path).expect("missing input file");

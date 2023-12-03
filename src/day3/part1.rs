@@ -1,6 +1,6 @@
 use std::fs;
-use std::io::BufRead;
-use std::str::FromStr;
+use std::iter::Enumerate;
+use std::str::{FromStr, Split};
 
 pub struct SchematicSymbol {
     pub pos: Position,
@@ -17,6 +17,33 @@ pub struct PartNumber {
 }
 
 impl SchematicSymbol {
+    pub fn check_gear(&self, numbers: &[PartNumber]) -> i32 {
+        let mut result = 0;
+        let mut matched = 0;
+
+        if self.symbol != '*' {
+            return 0;
+        }
+
+        for number in numbers {
+            if number.check_position(self.pos.row, self.pos.column) {
+                println!("{}", number.values);
+                matched += 1;
+
+                if result == 0 {
+                    result = number.to_i32();
+                } else {
+                    result *= number.to_i32();
+                }
+            }
+        }
+
+        if matched != 2 {
+            return 0;
+        }
+
+        return result;
+    }
     pub fn check(&self, numbers: &[PartNumber]) -> i32 {
         let mut result = 0;
 
@@ -81,6 +108,27 @@ pub fn run(path: &str) -> i32 {
 
     let mut rows = file_contents.split('\n').enumerate();
 
+    get_parts_and_numbers(&mut symbols, &mut numbers, &mut rows);
+
+    for symbol in symbols {
+        let value = symbol.check(numbers.as_slice());
+
+        println!(
+            "symbol: {} @ {} {} = {value} ",
+            symbol.symbol, symbol.pos.row, symbol.pos.column
+        );
+
+        result += value;
+    }
+
+    return result;
+}
+
+pub fn get_parts_and_numbers(
+    symbols: &mut Vec<SchematicSymbol>,
+    numbers: &mut Vec<PartNumber>,
+    rows: &mut Enumerate<Split<char>>,
+) {
     while let Some(row) = rows.next() {
         let mut row_enumerator = row.1.chars().enumerate();
         let mut next_number = String::from("");
@@ -117,7 +165,7 @@ pub fn run(path: &str) -> i32 {
             }
         }
 
-        if columns.len() > 0{
+        if columns.len() > 0 {
             numbers.push(PartNumber {
                 row: row.0,
                 columns: columns.clone(),
@@ -128,20 +176,6 @@ pub fn run(path: &str) -> i32 {
             next_number.clear();
         }
     }
-
-    for symbol in symbols {
-
-        let value = symbol.check(numbers.as_slice());
-
-        println!(
-            "symbol: {} @ {} {} = {value} ",
-            symbol.symbol, symbol.pos.row, symbol.pos.column
-        );
-
-        result += value;
-    }
-
-    return result;
 }
 
 #[test]

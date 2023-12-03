@@ -7,11 +7,11 @@ pub struct GamePull {
 }
 
 impl GamePull {
-    pub fn is_correct(&self, red_max: i32, green_max: i32, blue_max: i32) -> bool{
+    pub fn is_correct(&self, red_max: i32, green_max: i32, blue_max: i32) -> bool {
         return red_max >= self.red && green_max >= self.green && blue_max >= self.blue;
     }
 
-    pub fn score(&self) -> i32{
+    pub fn score(&self) -> i32 {
         return self.red * self.green * self.blue;
     }
 }
@@ -22,29 +22,32 @@ pub struct GameInstance {
 }
 
 impl GameInstance {
-    pub fn is_correct(&self, red_max: i32, green_max: i32, blue_max: i32) -> bool{
-        return self.pulls.iter().all(|x| x.is_correct(red_max,green_max,blue_max));
+    pub fn is_correct(&self, red_max: i32, green_max: i32, blue_max: i32) -> bool {
+        return self
+            .pulls
+            .iter()
+            .all(|x| x.is_correct(red_max, green_max, blue_max));
     }
 
     // Return a new GamePull represnting the max of all colors.
-    pub fn max_pull(&self) -> GamePull{
+    pub fn max_pull(&self) -> GamePull {
         let red = self.pulls.iter().max_by_key(|x| x.red);
         let green = self.pulls.iter().max_by_key(|x| x.green);
-        let blue = self.pulls.iter(). max_by_key(|x| x.blue);
+        let blue = self.pulls.iter().max_by_key(|x| x.blue);
 
-        if red.is_none() ||  green.is_none() || blue.is_none(){
-            return GamePull{
+        if red.is_none() || green.is_none() || blue.is_none() {
+            return GamePull {
                 red: 0,
                 green: 0,
-                blue: 0
-            }
+                blue: 0,
+            };
         }
 
-        return GamePull{
+        return GamePull {
             red: red.unwrap().red,
             green: green.unwrap().green,
-            blue: blue.unwrap().blue
-        }
+            blue: blue.unwrap().blue,
+        };
     }
 }
 

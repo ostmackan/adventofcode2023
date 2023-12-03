@@ -2,7 +2,7 @@ use std::fs;
 use std::str::FromStr;
 
 // Solves day1 part 1.
-pub fn run(path: &str) -> i32{
+pub fn run(path: &str) -> i32 {
     let file_contents = fs::read_to_string(&path).expect("load file error");
 
     let rows = file_contents.split("\n");
@@ -13,8 +13,7 @@ pub fn run(path: &str) -> i32{
         let first = row.find(char::is_numeric);
         let last = row.rfind(char::is_numeric);
 
-        if first == None || last == None
-        {
+        if first == None || last == None {
             panic!("error");
         }
 
@@ -25,7 +24,7 @@ pub fn run(path: &str) -> i32{
 
         let value = i32::from_str(&number);
 
-        if value.is_ok(){
+        if value.is_ok() {
             result += value.unwrap();
         }
     }
@@ -34,6 +33,6 @@ pub fn run(path: &str) -> i32{
 }
 
 #[test]
-fn test_run(){
+fn test_run() {
     assert_eq!(run("data/day1_test.txt"), 142);
 }
