@@ -1,7 +1,4 @@
 use std::fs;
-use std::iter::Enumerate;
-use std::os::unix::raw::uid_t;
-use std::slice::Iter;
 use crate::day4::shared;
 use crate::day4::shared::ScratchCard;
 
@@ -44,7 +41,7 @@ fn get_more_wins(scratch_cards:Vec<ScratchCard>, scratch_card: (usize, &ScratchC
 
     let mut cards = scratch_cards.iter().enumerate();
 
-    let count = scratch_cards.len();
+    //let count = scratch_cards.len();
 
     let mut  extra_card = cards.nth(pos);
 
