@@ -1,9 +1,16 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 
 fn main() {
-    day3();
+    day4();
+}
+
+fn day4(){
+    let part1 = day4::part1::run("data/day4_input.txt");
+
+    println!("day4_part1 {part1}");
 }
 
 fn day3() {
