@@ -9,8 +9,10 @@ fn main() {
 
 fn day4(){
     let part1 = day4::part1::run("data/day4_input.txt");
+    let part2 = day4::part2::run("data/day4_input.txt");
 
     println!("day4_part1 {part1}");
+    println!("day4_part2 {part2}");
 }
 
 fn day3() {
