@@ -9,7 +9,7 @@ fn main() {
 }
 
 fn day5(){
-    let part1 = day5::part1::run("data/day5_input.txt");
+    //let part1 = day5::part1::run("data/day5_input.txt");
     let part2 = day5::part2::run("data/day5_input.txt");
 
     println!("day5_part1 {part1}");
