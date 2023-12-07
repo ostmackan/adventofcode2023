@@ -107,10 +107,8 @@ pub fn run(path: &str) ->i64{
         mappers.push(next_mapper);
     }
 
-    let mut mapper_iter = mappers.as_slice();
+    let mapper_iter = mappers.as_slice();
     let mut list_of_results: Vec<i64> = Vec::new();
-
-    let mut seed_len = seeds.len()/100;
 
     for seed in seeds.iter().enumerate() {
         let mut  seed_transformed : i64 = *seed.1;
