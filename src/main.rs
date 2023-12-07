@@ -3,9 +3,36 @@ mod day2;
 mod day3;
 mod day4;
 mod day5;
+mod day6;
+mod day7;
+mod day8;
 
 fn main() {
-    day5();
+    day6();
+}
+
+fn day8(){
+    let part1 = day8::part1::run("data/day8/input.txt");
+    let part2 = day8::part2::run("data/day8/input.txt");
+
+    println!("day8_part1 {part1}");
+    println!("day8_part2 {part2}");
+}
+
+fn day7(){
+    let part1 = day7::part1::run("data/day7/input.txt");
+    let part2 = day7::part2::run("data/day7/input.txt");
+
+    println!("day7_part1 {part1}");
+    println!("day7_part2 {part2}");
+}
+
+fn day6(){
+    let part1 = day6::part1::run("data/day6/input.txt");
+    let part2 = day6::part2::run("data/day6/input.txt");
+
+    println!("day6_part1 {part1}");
+    println!("day6_part2 {part2}");
 }
 
 fn day5(){
