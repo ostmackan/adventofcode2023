@@ -8,7 +8,7 @@ mod day7;
 mod day8;
 
 fn main() {
-    day6();
+    day7();
 }
 
 fn day8(){
